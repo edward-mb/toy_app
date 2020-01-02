@@ -1,0 +1,7 @@
+pre-commit:
+  parallel: true
+  commands:
+    ruby:
+      files: git diff --name-only --staged
+      glob: "*.rb"
+      run: bundle exec standardrb files --fix 
