@@ -49,10 +49,11 @@ x-backend: &backend
 services:
   runner:
     <<: *backend
-    command: /bin/bash
+    command: /usr/bin/fish
     ports:
       #- '3000:3000'
       - '3002:3002'
+      - '8000:8000'
 
   dev:
     <<: *backend
@@ -66,9 +67,9 @@ services:
     ports:
       - '3001:3001'
 
-  sidekiq:
-    <<: *backend
-    command: bundle exec sidekiq -C config/sidekiq.yml
+        #sidekiq:
+        #<<: *backend
+        #command: bundle exec sidekiq -C config/sidekiq.yml
 
   database:
     image: postgres:12-alpine
